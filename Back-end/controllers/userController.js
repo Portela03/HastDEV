@@ -1,23 +1,10 @@
- 
-const userModel = require("../models/userModel");
-const bcrypt = require("bcrypt");
-const saltRounds = 10;
+/* const userModel = require('../models/userModel');
 
 function inserirUsuario(username, password, email, callback) {
-  bcrypt.hash(password, saltRounds, (err, hash) => {
-    if (err) {
-      callback(err);
-    }
-
-    userModel.query(
-      "INSERT INTO users (username, password, email) VALUES (?, ?, ?)",
-      [username, hash, email],
-      callback
-    );
-  });
+  userModel.query("INSERT INTO users (username, password, email) VALUES (?, ?, ?)", [username, password, email], callback);
 }
 
-// Exporta a função para uso em routes/userRoutes.js
 module.exports = {
   inserirUsuario,
-};
+}; 
+ */
