@@ -1,5 +1,6 @@
 import { Navbar, Nav, Button, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import NavLinks from "../../components/NavLinks/NavLinks"
 import LogoLight from "../../assets/LogoLight.svg";
 
 const Header: React.FC = () => {
@@ -14,33 +15,9 @@ const Header: React.FC = () => {
           />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarSupportedContent" />
-        <Navbar.Collapse id="navbarSupportedContent">
+        <Navbar.Collapse id="navbarSupportedContent" role="navigation">
           <Nav className="ml-auto topnav w-100 justify-content-between">
-            <div
-              className="d-flex align-items-center gap-4"
-              style={{ marginLeft: 100 }}
-            >
-              <Nav.Item>
-                <Nav.Link as={Link} to="/">
-                  Home
-                </Nav.Link>
-              </Nav.Item>
-              <Nav.Item>
-                <Nav.Link as={Link} to="/about">
-                  Sobre Nós
-                </Nav.Link>
-              </Nav.Item>
-              <Nav.Item>
-                <Nav.Link as={Link} to="/contact">
-                  Contate-nos
-                </Nav.Link>
-              </Nav.Item>
-              <Nav.Item>
-                <Nav.Link as={Link} to="/project">
-                  O Projeto
-                </Nav.Link>
-              </Nav.Item>
-            </div>
+            <NavLinks/>
             <div className="d-flex align-items-center gap-3">
               <Nav.Item>
                 <Link to="/login">
