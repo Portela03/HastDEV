@@ -1,8 +1,6 @@
 const jwt = require("jsonwebtoken");
 const pino = require("pino")();
 
-
-
 function checkToken(req, res, next) {
   const authHeader = req.headers["authorization"];
   const token = authHeader && authHeader.split(" ")[1];

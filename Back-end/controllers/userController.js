@@ -1,5 +1,5 @@
 const pino = require("pino")();
-const db = require("../Db"); // Certifique-se de importar o módulo do banco de dados apropriado aqui
+const db = require("../Db"); 
 
 async function getUserById(req, res) {
   const id = req.params.id;
@@ -16,7 +16,6 @@ async function getUserById(req, res) {
         return res.status(404).json({ error: "Usuário não encontrado" });
       }
     
-      // Verifique se o ID do usuário no banco de dados corresponde ao ID da URL
       if (userResult[0].userid != id) {
         pino.error("Acesso negado: ID de usuário inválido");
         return res
