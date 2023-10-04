@@ -1,5 +1,5 @@
 const bcrypt = require("bcrypt");
-const db = require("../db");
+const db = require("../Db");
 const pino = require("pino")();
 
 const saltRounds = 10;
@@ -13,12 +13,12 @@ function register(req, res) {
   db.query("SELECT * FROM users WHERE username = ?", [username], (err, usernameResult) => {
     if (err) {
       pino.error("Erro ao consultar o banco de dados:", err);
-      throw err;
+       
     }
     db.query("SELECT * FROM users WHERE email = ?", [email], (err, emailResult) => {
       if (err) {
         pino.error("Erro ao consultar o banco de dados:", err);
-        throw err;
+      
       }
       if (usernameResult.length > 0) {
         pino.info("Nome de usuário já em uso");
@@ -30,7 +30,7 @@ function register(req, res) {
         bcrypt.hash(password, saltRounds, (err, hash) => {
           if (err) {
             pino.error("Erro ao gerar o hash da senha:", err);
-            throw err;
+           
           }
 
           db.query(
@@ -39,7 +39,7 @@ function register(req, res) {
             (err, result) => {
               if (err) {
                 pino.error("Erro ao inserir dados no banco de dados:", err);
-                throw err;
+                
               }
               pino.info("Cadastrado com sucesso");
               res.status(200).json({ message: "Cadastrado com sucesso" });
