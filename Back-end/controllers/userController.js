@@ -1,23 +1,39 @@
 const pino = require("pino")();
+const db = require("../Db"); // Certifique-se de importar o módulo do banco de dados apropriado aqui
 
 async function getUserById(req, res) {
-    const id = req.params.id;
-  
-    try {
-      const user = await user.findById(id, "-password");
-  
-      if (!user) {
+  const id = req.params.id;
+
+  try {
+    db.query("SELECT * FROM users WHERE userid = ?", [id], (err, userResult) => {
+      if (err) {
+        pino.error("Erro ao consultar o banco de dados:", err);
+        return res.status(500).json({ error: "Erro interno do servidor" });
+      }
+
+      if (userResult.length === 0) {
         pino.info("Usuário não encontrado");
         return res.status(404).json({ error: "Usuário não encontrado" });
       }
+    
+      // Verifique se o ID do usuário no banco de dados corresponde ao ID da URL
+      if (userResult[0].userid != id) {
+        pino.error("Acesso negado: ID de usuário inválido");
+        return res
+          .status(403)
+          .json({ error: "Acesso negado: ID de usuário inválido" });
+      }else{
+        res.status(200).json({ user: userResult[0] });
+      }
+
   
-      res.status(200).json({ user });
-    } catch (err) {
-      pino.error("Erro ao buscar usuário:", err);
-      res.status(500).json({ error: "Erro interno do servidor" });
-    }
+    });
+  } catch (err) {
+    pino.error("Erro ao buscar usuário:", err);
+    res.status(500).json({ error: "Erro interno do servidor" });
   }
-  
-  module.exports = {
-    getUserById,
-  };
+}
+
+module.exports = {
+  getUserById,
+};
