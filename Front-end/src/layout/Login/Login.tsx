@@ -1,7 +1,11 @@
 import * as L from "./Login.styles";
 import { Container, Row, Col } from "react-bootstrap";
 import LoginImg from "../../assets/images/LoginImg.png";
-import { FacebookLoginButton, GoogleLoginButton, GithubLoginButton} from "react-social-login-buttons";
+import {
+  FacebookLoginButton,
+  GoogleLoginButton,
+  GithubLoginButton,
+} from "react-social-login-buttons";
 
 const Login: React.FC = () => {
   return (
@@ -30,11 +34,21 @@ const Login: React.FC = () => {
               </div>
               <div className="social-media">
                 <p>Ou faça login com:</p>
-                <div style={{ justifyContent: "center", alignItems: "center", marginLeft: "260px" }}>
-                  <FacebookLoginButton style={{ width: "360px", marginBottom: "20px" }}>
+                <div
+                  style={{
+                    justifyContent: "center",
+                    alignItems: "center",
+                    marginLeft: "260px",
+                  }}
+                >
+                  <FacebookLoginButton
+                    style={{ width: "360px", marginBottom: "20px" }}
+                  >
                     <span>Entrar com o Facebook</span>
                   </FacebookLoginButton>
-                  <GoogleLoginButton style={{ width: "360px", marginBottom: "20px" }}>
+                  <GoogleLoginButton
+                    style={{ width: "360px", marginBottom: "20px" }}
+                  >
                     <span>Entrar com o Google</span>
                   </GoogleLoginButton>
                   <GithubLoginButton style={{ width: "360px" }}>
