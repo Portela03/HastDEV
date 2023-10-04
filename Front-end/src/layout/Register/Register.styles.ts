@@ -27,8 +27,7 @@ export const LoginForm = styled.div`
   }
 
   .form-group {
-    margin-bottom: 15px;
-    gap: 16px;
+    margin-bottom: 10px;
     label {
       display: block;
       margin-bottom: 16px;
@@ -55,13 +54,13 @@ export const LoginForm = styled.div`
     border-radius: 50px;
     background: #fed30a;
     border: none;
-    margin-top: 48px;
-    margin-bottom: 48px;
+    margin-top: 20px;
+    margin-bottom: 20px;
   }
 
   .forgot-password {
     text-align: center;
-    margin-top: 10px;
+    margin-top: 5px;
     a {
       font-weight: bold;
       text-decoration: none;
