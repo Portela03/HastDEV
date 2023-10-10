@@ -3,6 +3,7 @@ import HeroImg1 from "../../assets/images/Hero/HeroImg1.webp";
 import HeroImg2 from "../../assets/images/Hero/HeroImg2.webp";
 import HeroImg3 from "../../assets/images/Hero/HeroImg3.webp";
 import HeroImg4 from "../../assets/images/Hero/HeroImg4.webp";
+import { Link } from "react-router-dom";
 
 const Hero: React.FC = () => {
   return (
@@ -14,9 +15,10 @@ const Hero: React.FC = () => {
         Encontre Projetos Reais para Anexar ao seu Portfólio, Conquiste Seu
         Local no Mercado E Seja Recompensado Por Isso!
       </p>
-      <Button href="/register" variant="primary">
-        Inscreva-se
-      </Button>
+      <Link to="/register">
+        <Button variant="primary">Inscreva-se</Button>
+      </Link>
+
       <div className="mt-4">
         <Row>
           <Col md={3}>
