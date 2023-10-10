@@ -1,5 +1,7 @@
 const mysql = require("mysql2");
 require('dotenv').config();
+const pino = require('pino');
+const logger = pino();
 
 const db = mysql.createPool({
   host: process.env.DB_HOST,
@@ -11,9 +13,9 @@ const db = mysql.createPool({
 
 db.getConnection((err, connection) => {
   if (err) {
-    pino.error("Erro ao conectar-se ao banco de dados:", err);
+    logger.error("Erro ao conectar-se ao banco de dados:", err);
   } else {
-    pino.info("Conexão com o banco de dados bem-sucedida");
+    logger.info("Conexão com o banco de dados bem-sucedida");
     connection.release();
   }
 });
