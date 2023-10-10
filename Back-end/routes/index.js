@@ -6,7 +6,7 @@ const authController = require("../controllers/authController");
 const userController = require("../controllers/userController");
 
 // Rota de registro
-router.post("/register", registerController.register);
+router.post("/register", registerController.registrationValidationRules, registerController.register);
 
 // Rota de login
 router.post("/login", loginController.login);

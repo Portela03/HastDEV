@@ -8,4 +8,14 @@ const db = mysql.createPool({
   database: process.env.DB_DATABASE,
 });
 
+
+db.getConnection((err, connection) => {
+  if (err) {
+    pino.error("Erro ao conectar-se ao banco de dados:", err);
+  } else {
+    pino.info("Conexão com o banco de dados bem-sucedida");
+    connection.release();
+  }
+});
+
 module.exports = db;
