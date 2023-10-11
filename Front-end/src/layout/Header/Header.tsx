@@ -1,10 +1,32 @@
+import * as L from "./Header.styles";
 import { Navbar, Nav, Button, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import NavLinks from "../../components/NavLinks/NavLinks"
 import LogoLight from "../../assets/LogoLight.svg";
 
-const Header: React.FC = () => {
+import Switch from 'react-switch';
+import { ThemeContext } from "styled-components";
+import { useContext } from "react";
+import {shade} from 'polished'
+
+
+interface Props{
+  toggleTheme(): void;
+};
+
+const Header: React.FC<Props> = ({toggleTheme}) => {
+
+  
+  const theme = useContext(ThemeContext);
+
+  if (!theme) {
+    
+    return null;
+  }
+
   return (
+
+    <L.Container id="container1">
     <Navbar expand="lg">
       <Container fluid>
         <Navbar.Brand as={Link} to="/" className="mr-auto">
@@ -29,11 +51,33 @@ const Header: React.FC = () => {
                   <Button variant="danger">Inscreva-se</Button>
                 </Link>
               </Nav.Item>
+              <Nav.Item>
+                
+                  <Switch
+                    onChange={toggleTheme}
+                    checked={theme?.title === 'dark'}
+                    checkedIcon={true}
+                    uncheckedIcon={true}
+                    height={20}
+                    width={35}
+                    handleDiameter={20}
+                    offColor={theme ? shade(0.15, theme.colors.primary) : undefined}
+                    onColor={theme?.colors.secondary}
+                  >
+                    
+                  </Switch>
+
+
+                
+              </Nav.Item>
+
+
             </div>
           </Nav>
         </Navbar.Collapse>
       </Container>
     </Navbar>
+    </L.Container>
   );
 };
 
