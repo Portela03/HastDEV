@@ -1,5 +1,5 @@
 const pino = require("pino")();
-const db = require("../Db"); 
+const db = require("../../Db"); 
 
 async function getUserById(req, res) {
   const id = req.params.id;
@@ -7,7 +7,7 @@ async function getUserById(req, res) {
   try {
     db.query("SELECT * FROM users WHERE userid = ?", [id], (err, userResult) => {
       if (err) {
-        pino.error("Erro ao consultar o banco de dados:", err);
+        pino.error("Erro ao consultar o banco de dados:" + err);
         return res.status(500).json({ error: "Erro interno do servidor" });
       }
 

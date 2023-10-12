@@ -1,5 +1,5 @@
 const bcrypt = require("bcrypt");
-const db = require("../Db");
+const db = require("../../Db");
 const pino = require("pino")();
 const jwt = require("jsonwebtoken");
 
@@ -9,13 +9,13 @@ function login(req, res) {
 
   db.query("SELECT * FROM users WHERE username = ? ", [username], (err, userResult) => {
     if (err) {
-      pino.error("Erro ao consultar o banco de dados:", err);
+      pino.error("Erro ao consultar o banco de dados:" + err);
       return res.status(500).json({ error: "Erro interno do servidor" });
     }
     if (userResult.length > 0) {
       bcrypt.compare(password, userResult[0].password, (err, senhaCorreta) => {
         if (err) {
-          pino.error("Erro ao comparar senhas criptografadas:", err);
+          pino.error("Erro ao comparar senhas criptografadas:" + err);
           return res.status(500).json({ error: "Erro interno do servidor" });
         }
         if (senhaCorreta) {

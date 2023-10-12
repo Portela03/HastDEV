@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const app = express();
-const routes = require("./routes");
+const routes = require("./user/routes");
 
 // Conexão com o front
 app.use(express.json());
