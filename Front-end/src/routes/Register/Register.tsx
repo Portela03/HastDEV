@@ -2,11 +2,6 @@ import * as R from "./Register.styles";
 import * as yup from "yup";
 import { Container, Row, Col } from "react-bootstrap";
 import RegisterImg from "../../assets/images/RegisterImg.png";
-import {
-  FacebookLoginButton,
-  GoogleLoginButton,
-  GithubLoginButton,
-} from "react-social-login-buttons";
 import { FormFetch } from "../../axios/config";
 import { Formik, Form, Field } from "formik";
 
