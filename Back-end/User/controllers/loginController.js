@@ -11,7 +11,7 @@ function login(req, res) {
   const { username, password } = req.body;
 
   // Buscar o usuário pelo nome de usuário
-  User.findOne({ where: { username: username } })
+  User.findOne({ where: { username } })
     .then((user) => {
       if (!user) {
         pino.info("Usuário não encontrado");
