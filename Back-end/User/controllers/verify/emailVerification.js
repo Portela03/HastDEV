@@ -1,7 +1,8 @@
 const express = require('express');
 const nodemailer = require('nodemailer');
-const User = require('../models/userModel');
+const User = require('../../models/userModel');
 const pino = require('pino')();
+const generateVerificationCode = require("./emailVerifyGenerate")
 
 // Função para enviar email de verificação
 async function sendVerificationEmail(req, res) {
