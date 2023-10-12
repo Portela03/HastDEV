@@ -25,7 +25,7 @@ router.post("/refresh-token", authController.checkRefreshToken, (req, res) => {
   });
 
   // Rota para enviar email de verificação
-router.post('/verify', generateVerificationCode ,sendVerificationEmail);
+router.post('/verify' ,sendVerificationEmail);
 
 
 module.exports = router;
