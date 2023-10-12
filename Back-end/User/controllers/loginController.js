@@ -1,19 +1,23 @@
 const bcrypt = require("bcrypt");
-const db = require("../../Db");
+const { validationResult } = require("express-validator");
 const pino = require("pino")();
 const jwt = require("jsonwebtoken");
+const User = require("../models/userModel"); // Importe o modelo de usuário que você definiu
 
 function login(req, res) {
-  const username = req.body.username;
-  const password = req.body.password;
+  const { username, password } = req.body;
 
-  db.query("SELECT * FROM users WHERE username = ? ", [username], (err, userResult) => {
-    if (err) {
-      pino.error("Erro ao consultar o banco de dados:" + err);
-      return res.status(500).json({ error: "Erro interno do servidor" });
-    }
-    if (userResult.length > 0) {
-      bcrypt.compare(password, userResult[0].password, (err, senhaCorreta) => {
+ 
+  // Buscar o usuário pelo nome de usuário
+  User.findOne({ where: { username: username } })
+    .then((user) => {
+      if (!user) {
+        pino.info("Usuário não encontrado");
+        return res.status(404).json({ error: "Usuário não encontrado" });
+      }
+
+      // Comparar a senha fornecida com a senha armazenada no banco de dados
+      bcrypt.compare(password, user.password, (err, senhaCorreta) => {
         if (err) {
           pino.error("Erro ao comparar senhas criptografadas:" + err);
           return res.status(500).json({ error: "Erro interno do servidor" });
@@ -25,7 +29,7 @@ function login(req, res) {
 
           const token = jwt.sign(
             {
-              id: userResult[0].id
+              id: user.id,
             },
             secret
           );
@@ -36,11 +40,11 @@ function login(req, res) {
           return res.status(401).json({ error: "Senha incorreta" });
         }
       });
-    } else {
-      pino.info("Usuário não encontrado");
-      return res.status(404).json({ error: "Usuário não encontrado" });
-    }
-  });
+    })
+    .catch((err) => {
+      pino.error("Erro ao consultar o banco de dados:" + err);
+      res.status(500).json({ error: "Erro interno do servidor" });
+    });
 }
 
 module.exports = { login };
