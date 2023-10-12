@@ -14,14 +14,15 @@ import  GlobalStyle  from './styles/global';
 import {ThemeProvider} from 'styled-components';
 import light from './styles/themes/light';
 import dark from './styles/themes/dark';
-import  {useState} from 'react'
+
+import usePersisteState from './utils/usePersisteState';
 
 
 
 
 
 function App() {
-  const [theme, setTheme] = useState(light);
+  const [theme, setTheme] = usePersisteState('themes',light);
   const toggleTheme = () =>{
     setTheme(theme.title === 'dark' ? light :dark);
   }

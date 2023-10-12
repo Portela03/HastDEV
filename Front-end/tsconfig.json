@@ -25,6 +25,6 @@
   "include": ["src", "node_modules/@types"],
   "references": [{ "path": "./tsconfig.node.json" }],
   "files": [
-    "src/styles/styled.d.ts", "./src/layout/Header/Container.ts"
-  ]
+    "src/styles/styled.d.ts"
+  ],
 }
