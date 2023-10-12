@@ -1,4 +1,4 @@
-import {createGlobalStyle} from 'styled-components';
+import { createGlobalStyle } from "styled-components";
 
 export default createGlobalStyle`
 * {
@@ -8,10 +8,8 @@ export default createGlobalStyle`
     font-display: swap;
 }
 body {
-    background: ${props => props.theme.colors.background};
+    background: ${(props) => props.theme.colors.background};
     font-size:14px;
-    color : ${props => props.theme.colors.text};
-    
-    
-
+    color : ${(props) => props.theme.colors.text};
+}
 `;
