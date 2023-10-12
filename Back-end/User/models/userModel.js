@@ -1,4 +1,5 @@
 const Sequelize = require('sequelize');
+const sequelize = require('../../Db')
 
 // Definir o modelo de usuário
 const User = sequelize.define('user', {
