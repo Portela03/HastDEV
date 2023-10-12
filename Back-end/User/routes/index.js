@@ -6,7 +6,8 @@ const registerController = require("../controllers/registerController");
 const loginController = require("../controllers/loginController");
 const authController = require("../controllers/authController");
 const userController = require("../controllers/userController");
-const sendVerificationEmail = require("../controllers/verify/emailVerification")
+const sendVerificationEmail = require("../controllers/verify/emailVerification");
+const generateVerificationCode = require("../controllers/verify/emailVerifyGenerate");
 
 // Rota de registro
 router.post("/register", registerController.registrationValidationRules, registerController.register);
@@ -24,7 +25,7 @@ router.post("/refresh-token", authController.checkRefreshToken, (req, res) => {
   });
 
   // Rota para enviar email de verificação
-router.post('/verify', sendVerificationEmail);
+router.post('/verify', generateVerificationCode ,sendVerificationEmail);
 
 
 module.exports = router;

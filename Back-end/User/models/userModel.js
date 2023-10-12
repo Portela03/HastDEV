@@ -37,6 +37,9 @@ const User = sequelize.define('user', {
     allowNull: false,
     defaultValue: 0, // Inicializa como zero por padrão
   },
+  verificationCode: {
+    type: Sequelize.STRING(6), // Ajuste o tamanho e o tipo conforme necessário
+  },
 }, {
   timestamps: false, 
 });
