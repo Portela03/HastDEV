@@ -1,6 +1,5 @@
 const pino = require("pino")();
-const User = require('../models/userModel');  
- 
+const User = require("../models/userModel");
 
 // Função de rota para buscar usuário por ID
 async function getUserById(req, res) {
@@ -13,7 +12,6 @@ async function getUserById(req, res) {
       pino.info("Usuário não encontrado");
       return res.status(404).json({ error: "Usuário não encontrado" });
     }
-
 
     res.status(200).json({ user });
   } catch (err) {

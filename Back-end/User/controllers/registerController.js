@@ -1,14 +1,15 @@
 const bcrypt = require("bcrypt");
-const { validationResult } = require('express-validator');
+const { validationResult } = require("express-validator");
 const pino = require("pino")();
-const User = require('../models/userModel'); // Importe o modelo de usuário que você definiu
-const { registrationValidationRules } = require('./validations/userValidation');
+const User = require("../models/userModel"); // Importe o modelo de usuário que você definiu
+const { registrationValidationRules } = require("./validations/userValidation");
 
 const saltRounds = 10;
 
 // Função de rota para o registro
 function register(req, res) {
-  const { username, email, password, confirmPassword, first_name, last_name } = req.body;
+  const { username, email, password, confirmPassword, first_name, last_name } =
+    req.body;
 
   // Realiza validações de entrada
   const errors = validationResult(req);
@@ -19,7 +20,9 @@ function register(req, res) {
 
   if (password !== confirmPassword) {
     // Se a senha e a confirmação de senha não coincidem, retorne um erro
-    return res.status(400).json({ error: 'A senha e a confirmação de senha não coincidem' });
+    return res
+      .status(400)
+      .json({ error: "A senha e a confirmação de senha não coincidem" });
   }
 
   // Verifica se o nome de usuário já está em uso
