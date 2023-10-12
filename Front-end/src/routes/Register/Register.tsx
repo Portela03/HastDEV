@@ -120,30 +120,6 @@ const Register: React.FC = () => {
                   <div className="sign_in">
                     Já Tem uma Conta?<a href="#"> Login</a>
                   </div>
-                  <div className="social-media">
-                    <p>Ou Inscreva-se com:</p>
-                    <div
-                      style={{
-                        justifyContent: "center",
-                        alignItems: "center",
-                        marginLeft: "250px",
-                      }}
-                    >
-                      <FacebookLoginButton
-                        style={{ width: "360px", marginBottom: "20px" }}
-                      >
-                        <span>Entrar com o Facebook</span>
-                      </FacebookLoginButton>
-                      <GoogleLoginButton
-                        style={{ width: "360px", marginBottom: "20px" }}
-                      >
-                        <span>Entrar com o Google</span>
-                      </GoogleLoginButton>
-                      <GithubLoginButton style={{ width: "360px" }}>
-                        <span>Entrar com o Github</span>
-                      </GithubLoginButton>
-                    </div>
-                  </div>
                 </>
               )}
             </Formik>
