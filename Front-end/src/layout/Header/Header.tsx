@@ -12,7 +12,7 @@ import {shade} from 'polished'
 
 interface Props{
   toggleTheme(): void;
-};
+}
 
 const Header: React.FC<Props> = ({toggleTheme}) => {
 
@@ -25,7 +25,6 @@ const Header: React.FC<Props> = ({toggleTheme}) => {
   }
 
   return (
-
     <L.Container id="container1">
     <Navbar expand="lg">
       <Container fluid>
@@ -47,7 +46,7 @@ const Header: React.FC<Props> = ({toggleTheme}) => {
                 </Link>
               </Nav.Item>
               <Nav.Item>
-                <Link to="/register">
+                <Link to="/register" >
                   <Button variant="danger">Inscreva-se</Button>
                 </Link>
               </Nav.Item>
