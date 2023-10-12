@@ -7,7 +7,7 @@ export const rightDivSyled = styled.div`
   background: #fed30a;
 `;
 
-export const LoginForm = styled.div`
+export const RegisterForm = styled.div`
   background-color: #fff;
   padding: 20px;
   border-radius: 10px;
