@@ -1,8 +1,8 @@
 const bcrypt = require("bcrypt");
-const db = require("../Db");
+const db = require("../../Db");
 const pino = require("pino")();
 const { validationResult } = require('express-validator');
-const { registrationValidationRules } = require('./validation/userValidation');
+const { registrationValidationRules } = require('./validations/userValidation');
 
 const saltRounds = 10;
 
@@ -32,7 +32,7 @@ function register(req, res) {
   // Verificar se o username e o email já estão em uso
   db.query("SELECT * FROM users WHERE username = ? OR email = ?", [username, email], (err, result) => {
     if (err) {
-      pino.error("Erro ao consultar o banco de dados:", err);
+      pino.error("Erro ao consultar o banco de dados:" + err);
       return res.status(500).json({ error: "Erro ao consultar o banco de dados" });
     }
 
@@ -49,7 +49,7 @@ function register(req, res) {
     // Hash da senha
     bcrypt.hash(password, saltRounds, (err, hash) => {
       if (err) {
-        pino.error("Erro ao gerar o hash da senha:", err);
+        pino.error("Erro ao gerar o hash da senha:" + err);
         return res.status(500).json({ error: "Erro Interno do servidor" });
       }
 
@@ -59,7 +59,7 @@ function register(req, res) {
         [username, hash, email, first_name, last_name],
         (err, result) => {
           if (err) {
-            pino.error("Erro ao inserir dados no banco de dados:", err);
+            pino.error("Erro ao inserir dados no banco de dados:" + err);
             return res.status(500).json({ error: "Erro Interno do servidor" });
           }
           pino.info("Cadastrado com sucesso");

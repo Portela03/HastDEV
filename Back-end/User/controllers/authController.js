@@ -12,7 +12,7 @@ function checkToken(req, res, next) {
 
   jwt.verify(token, process.env.SECRET, (err, decoded) => {
     if (err) {
-      pino.error("Token inválido");
+      pino.error("Token inválido" + err);
       return res.status(403).json({ error: "Token inválido" });
     }
     req.userid = decoded.id;  
@@ -37,7 +37,7 @@ function checkToken(req, res, next) {
 
   jwt.verify(refreshToken, process.env.REFRESH_SECRET, (err, decoded) => {
     if (err) {
-      pino.error("Token inválido");
+      pino.error("Token inválido" + err);
       return res.status(403).json({ error: "refresh Token inválido" });
     }
     req.userId = decoded.userId;

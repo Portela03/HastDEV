@@ -21,7 +21,8 @@
     "jsonwebtoken": "^9.0.2",
     "mongose": "^0.0.2-security",
     "mysql2": "^3.6.1",
-    "pino": "^8.16.0"
+    "pino": "^8.16.0",
+    "sequelize": "^6.33.0"
   },
   "devDependencies": {
     "nodemon": "^3.0.1"

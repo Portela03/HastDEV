@@ -13,7 +13,7 @@ const db = mysql.createPool({
 
 db.getConnection((err, connection) => {
   if (err) {
-    logger.error("Erro ao conectar-se ao banco de dados:", err);
+    logger.error("Erro ao conectar-se ao banco de dados:" + err);
   } else {
     logger.info("Conexão com o banco de dados bem-sucedida");
     connection.release();
