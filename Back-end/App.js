@@ -11,6 +11,8 @@ app.use(cors());
 app.use("/", routes);
 
 
+
+
 app.listen(3001, () => {
   console.log("Rodando na porta 3001");
 });
