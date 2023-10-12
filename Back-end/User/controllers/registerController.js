@@ -3,7 +3,8 @@ const { validationResult } = require("express-validator");
 const pino = require("pino")();
 const User = require("../models/userModel"); // Importe o modelo de usuário que você definiu
 const { registrationValidationRules } = require("./validations/userValidation");
-
+const jwt = require("jsonwebtoken");
+const nodemailer = require("nodemailer");
 const saltRounds = 10;
 
 // Função de rota para o registro
@@ -77,6 +78,34 @@ function register(req, res) {
       pino.error("Erro ao consultar o banco de dados:" + err);
       res.status(500).json({ error: "Erro ao consultar o banco de dados" });
     });
+
+    const token = jwt.sign({ userId: user.id }, process.env.EMAIL_VERIFICATION_SECRET, { expiresIn: '24h' });
+    sendVerificationEmail(user.email, token);
+}
+
+function sendVerificationEmail(email, token) {
+  const transporter = nodemailer.createTransport({
+    service: "Gmail",
+    auth: {
+      user: process.env.EMAIL_USERNAME,
+      pass: process.env.EMAIL_PASSWORD,
+    },
+  });
+
+  const mailOptions = {
+    from: process.env.EMAIL_USERNAME,
+    to: email,
+    subject: "Confirmação de E-mail",
+    html: `<p>Clique no link a seguir para confirmar seu e-mail: <a href="${process.env.BASE_URL}/verify-email/${token}">Confirmar E-mail</a></p>`,
+  };
+
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      console.log(error);
+    } else {
+      console.log("E-mail de verificação enviado: " + info.response);
+    }
+  });
 }
 
 module.exports = { registrationValidationRules, register };

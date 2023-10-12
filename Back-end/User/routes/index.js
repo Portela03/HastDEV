@@ -4,6 +4,7 @@ const registerController = require("../controllers/registerController");
 const loginController = require("../controllers/loginController");
 const authController = require("../controllers/authController");
 const userController = require("../controllers/userController");
+const emailVerificationController = require("../controllers/emailVerificationController");
 
 //Rota Publica
 router.get("/", (req, res) => {
@@ -16,6 +17,9 @@ router.post(
   registerController.registrationValidationRules,
   registerController.register
 );
+
+// Rota de verificação de e-mail
+router.get("/verify-email/:token", emailVerificationController.verifyEmail);
 
 // Rota de login
 router.post("/login", loginController.login);
