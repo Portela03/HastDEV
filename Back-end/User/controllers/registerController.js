@@ -10,6 +10,7 @@ const saltRounds = 10;
 function register(req, res) {
   const { username, email, password, confirmPassword, first_name, last_name } = req.body;
 
+  // Realiza validações de entrada
   const errors = validationResult(req);
 
   if (!errors.isEmpty()) {
@@ -17,28 +18,33 @@ function register(req, res) {
   }
 
   if (password !== confirmPassword) {
+    // Se a senha e a confirmação de senha não coincidem, retorne um erro
     return res.status(400).json({ error: 'A senha e a confirmação de senha não coincidem' });
   }
 
-  // Verificar se o username e o email já estão em uso
+  // Verifica se o nome de usuário já está em uso
   User.findOne({ where: { username: username } })
     .then((existingUser) => {
       if (existingUser) {
+        // Nome de usuário já está em uso
         pino.info("Nome de usuário já em uso");
         return res.status(400).json({ error: "Nome de usuário já em uso" });
       } else {
+        // Verifica se o email já está em uso
         return User.findOne({ where: { email: email } });
       }
     })
     .then((existingUser) => {
       if (existingUser) {
+        // Email já está em uso
         pino.info("Email já em uso");
         return res.status(400).json({ error: "Email já em uso" });
       }
 
-      // Hash da senha
+      // Hash da senha para proteger
       bcrypt.hash(password, saltRounds, (err, hash) => {
         if (err) {
+          // Erro ao gerar o hash da senha
           pino.error("Erro ao gerar o hash da senha:" + err);
           return res.status(500).json({ error: "Erro Interno do servidor" });
         }
@@ -52,19 +58,22 @@ function register(req, res) {
           last_name: last_name,
         })
           .then(() => {
+            // Registro bem-sucedido
             pino.info("Cadastrado com sucesso");
             res.status(200).json({ message: "Cadastrado com sucesso" });
           })
           .catch((err) => {
+            // Erro ao inserir dados no banco de dados
             pino.error("Erro ao inserir dados no banco de dados:" + err);
             res.status(500).json({ error: "Erro Interno do servidor" });
           });
       });
     })
     .catch((err) => {
+      // Erro ao consultar o banco de dados
       pino.error("Erro ao consultar o banco de dados:" + err);
       res.status(500).json({ error: "Erro ao consultar o banco de dados" });
     });
 }
 
-module.exports = {registrationValidationRules, register };
+module.exports = { registrationValidationRules, register };
