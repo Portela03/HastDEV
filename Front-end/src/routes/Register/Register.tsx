@@ -4,6 +4,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import RegisterImg from "../../assets/images/RegisterImg.png";
 import { FormFetch } from "../../axios/config";
 import { Formik, Form, Field } from "formik";
+import { Link } from "react-router-dom";
 
 interface FormValues {
   username: string;
@@ -30,9 +31,9 @@ const validationsRegister = yup.object().shape({
 });
 
 const Register: React.FC = () => {
-  const handleRegister = async ({first_name, last_name, username, email, password, confirmPassword}: FormValues) => {
+  const handleRegister = async ({ first_name, last_name, username, email, password, confirmPassword }: FormValues) => {
     try {
-      const response = await FormFetch.post("/register", {first_name, last_name, username, email, password, confirmPassword})
+      const response = await FormFetch.post("/register", { first_name, last_name, username, email, password, confirmPassword })
       console.log(response.data);
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {
@@ -113,8 +114,11 @@ const Register: React.FC = () => {
                     </div>
                   </form>
                   <div className="sign_in">
-                    Já Tem uma Conta?<a href="#"> Login</a>
+                    <Link to="/login"  >
+                      <a>Já Tem uma Conta? Login</a>
+                    </Link>
                   </div>
+
                 </>
               )}
             </Formik>

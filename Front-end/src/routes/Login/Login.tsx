@@ -9,6 +9,7 @@ import {
 } from "react-social-login-buttons";
 import { FormFetch } from "../../axios/config";
 import { Formik, Form, Field } from "formik";
+import { Link } from "react-router-dom";
 
 interface FormValues {
   username: string;
@@ -81,8 +82,11 @@ const Login: React.FC = () => {
                         </button>
                       </div>
                     </form>
+                    
                     <div className="sign_in">
+                    <Link to ="/Register">
                       Nao tem uma Conta?<a href="#"> Inscreva-se</a>
+                      </Link>
                     </div>
                     <div className="forgot-password">
                       <a href="#">Esqueceu a senha?</a>
