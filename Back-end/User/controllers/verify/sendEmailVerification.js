@@ -6,7 +6,7 @@ const generateVerificationCode = require("./emailVerifyGenerate");
 
 // Função para enviar email de verificação
 async function sendVerificationEmail(req, res) {
-  const { username, email, password, confirmPassword, first_name, last_name } = req.body;
+  const {email} = req.body;
 
   try {
     // Gere um código de verificação (você pode usar bibliotecas como crypto para isso).
@@ -22,7 +22,7 @@ async function sendVerificationEmail(req, res) {
 
         // Envie o e-mail de verificação.
         const transport = nodemailer.createTransport({
-          host: "smtp.gmail.com",
+          host: "smtp.hostinger.com",
           port: 465,
           secure: true,
           auth: {
@@ -32,7 +32,7 @@ async function sendVerificationEmail(req, res) {
         });
 
         await transport.sendMail({
-          from: "HASTDEV <HastDev@gmail.com.br>",
+          from: process.env.GMAIL_USER,
           to: email, // Usar o e-mail fornecido na solicitação.
           subject: "Confirmação de email",
           html: `<h1>Seu código de verificação: ${verificationCode}</h1>`
