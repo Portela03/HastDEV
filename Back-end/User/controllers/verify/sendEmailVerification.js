@@ -1,55 +1,55 @@
 const express = require('express');
 const nodemailer = require('nodemailer');
 const User = require('../../models/userModel');
+const VerificationCode = require('../../models/verificationCodeModel');
 const pino = require('pino')();
-const generateVerificationCode = require("./emailVerifyGenerate");
+const generateVerificationCode = require("./emailVerifyGenerate")
 
 // Função para enviar email de verificação
 async function sendVerificationEmail(req, res) {
-  const {email} = req.body;
+  const { email } = req.body;
 
   try {
-    // Gere um código de verificação (você pode usar bibliotecas como crypto para isso).
     const verificationCode = generateVerificationCode();
+
+    const user = await User.findOne({ where: { email } });
+
+    if (user) {
     
-    // Salve o código de verificação no banco de dados junto com o e-mail do usuário.
-    try {
-      const user = await User.findOne({ where: { email } });
+      await VerificationCode.destroy({ where: { userId: user.userid } });
+
+  
+      const code = await VerificationCode.create({
+        userId: user.userid,
+        code: verificationCode,
+      });
+
       
-      if (user) {
-        // Atualize o campo verificationCode no registro do usuário encontrado.
-        await User.update({ verificationCode }, { where: { email } });
+      const transport = nodemailer.createTransport({
+        host: 'smtp.hostinger.com',
+        port: 465,
+        secure: true,
+        auth: {
+          user: process.env.GMAIL_USER,
+          pass: process.env.GMAIL_PASS,
+        },
+      });
 
-        // Envie o e-mail de verificação.
-        const transport = nodemailer.createTransport({
-          host: "smtp.hostinger.com",
-          port: 465,
-          secure: true,
-          auth: {
-            user: process.env.GMAIL_USER,
-            pass: process.env.GMAIL_PASS,
-          }
-        });
+      await transport.sendMail({
+        from: process.env.GMAIL_USER,
+        to: email,
+        subject: 'Confirmação de email',
+        html: `<h1>Seu código de verificação: ${code.code}</h1>`,
+      });
 
-        await transport.sendMail({
-          from: process.env.GMAIL_USER,
-          to: email, // Usar o e-mail fornecido na solicitação.
-          subject: "Confirmação de email",
-          html: `<h1>Seu código de verificação: ${verificationCode}</h1>`
-        });
-
-        pino.info("Email de verificação enviado com sucesso!");
-        res.status(200).json({ message: "Email de verificação enviado com sucesso." });
-      } else {
-        res.status(404).json({ error: 'Usuário não encontrado.' });
-      }
-    } catch (err) {
-      console.error('Erro ao atualizar o código de verificação:', err);
-      res.status(500).json({ error: 'Erro ao atualizar o código de verificação.' });
+      pino.info('Email de verificação enviado com sucesso!');
+      res.status(200).json({ message: 'Email de verificação enviado com sucesso.' });
+    } else {
+      res.status(404).json({ error: 'Usuário não encontrado.' });
     }
   } catch (err) {
-    pino.error("Erro ao enviar email de verificação: " + err);
-    res.status(500).json({ error: "Erro ao enviar email de verificação." });
+    console.error('Erro ao enviar email de verificação: ' + err);
+    res.status(500).json({ error: 'Erro ao enviar email de verificação.' });
   }
 }
 

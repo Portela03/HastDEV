@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
-const sequelize = require('../../Db')
+const sequelize = require('../../Db');
 
-// Definir o modelo de usuário
+// Defina o modelo de usuário
 const User = sequelize.define('user', {
   userid: {
     type: Sequelize.INTEGER,
@@ -29,19 +29,16 @@ const User = sequelize.define('user', {
     type: Sequelize.STRING(45),
     allowNull: false,
   },
-   lockUntil: {
-    type: Sequelize.DATE // Use o tipo de dados apropriado para armazenar datas/horas
+  lockUntil: {
+    type: Sequelize.DATE,  
   },
   loginAttempts: {
     type: Sequelize.INTEGER,
     allowNull: false,
-    defaultValue: 0, // Inicializa como zero por padrão
-  },
-  verificationCode: {
-    type: Sequelize.STRING(6), // Ajuste o tamanho e o tipo conforme necessário
+    defaultValue: 0,  
   },
 }, {
-  timestamps: false, 
+  timestamps: false,
 });
 
 module.exports = User;

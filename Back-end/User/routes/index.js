@@ -7,6 +7,7 @@ const loginController = require("../controllers/loginController");
 const authController = require("../controllers/authController");
 const userController = require("../controllers/userController");
 const sendVerificationEmail = require("../controllers/verify/sendEmailVerification");
+const PinVerify = require("../controllers/verify/confirmEmailVerify")
  
 // Rota de registro
 router.post("/register", registerController.registrationValidationRules, registerController.register);
@@ -26,5 +27,7 @@ router.post("/refresh-token", authController.checkRefreshToken, (req, res) => {
   // Rota para enviar email de verificação
 router.post('/verify' ,sendVerificationEmail);
 
+//rota para verificar o pin
+router.post('/checkverify', PinVerify)
 
 module.exports = router;
