@@ -75,7 +75,7 @@ export const RegisterForm = styled.div`
   }
 
   .sign_in {
-    color: #000;
+    color: ${(props) => props.theme.colors.text};
     font-family: Inter;
     font-size: 16px;
     font-style: normal;
@@ -84,7 +84,7 @@ export const RegisterForm = styled.div`
 
     a {
       text-decoration: none;
-      color: #000;
+      color: ${(props) => props.theme.colors.text};
       font-weight: bold;
     }
   }

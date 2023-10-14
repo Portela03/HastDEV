@@ -4,11 +4,11 @@ export const rightDivSyled = styled.div`
   width: 438px;
   height: 830px;
   flex-shrink: 0;
-  background: #fed30a;
+  background:  ${(props) => props.theme.colors.background};
 `;
 
 export const LoginForm = styled.div`
-  background-color: #fff;
+  background-color:  ${(props) => props.theme.colors.text};
   padding: 20px;
   border-radius: 10px;
   text-align: center;
