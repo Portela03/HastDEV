@@ -25,13 +25,15 @@ const Header: React.FC<Props> = ({ toggleTheme }) => {
     return null;
   }
 
+
+    const ImgDarkLight = (theme.title) === 'light' ? LogoLight : LogoDark
   return (
     <L.Container id="container1">
       <Navbar expand="lg">
         <Container fluid>
           <Navbar.Brand as={Link} to="/" className="mr-auto">
             <img
-                src={(theme.title) === 'light' ? LogoLight : LogoDark}
+                src={ImgDarkLight}
               alt="Logo HastyDEV modo Light"
               className="mt-2"
             />
