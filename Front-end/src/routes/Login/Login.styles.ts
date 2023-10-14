@@ -8,7 +8,7 @@ export const rightDivSyled = styled.div`
 `;
 
 export const LoginForm = styled.div`
-  background-color:  ${(props) => props.theme.colors.text};
+  background-color:  ${(props) => props.theme.colors.background};
   padding: 20px;
   border-radius: 10px;
   text-align: center;
@@ -18,7 +18,7 @@ export const LoginForm = styled.div`
     text-align: center;
     margin-top: 5%;
     margin-bottom: 54px;
-    color: #1a1a1a;
+    color:  ${(props) => props.theme.colors.text};
     font-family: Inter;
     font-size: 16px;
     font-style: normal;
@@ -32,7 +32,7 @@ export const LoginForm = styled.div`
     label {
       display: block;
       margin-bottom: 16px;
-      color: #000;
+      color:  ${(props) => props.theme.colors.text};
       font-family: Inter;
       font-size: 16px;
       font-style: normal;
@@ -43,8 +43,9 @@ export const LoginForm = styled.div`
       width: 370px;
       padding: 10px;
       border-radius: 50px;
-      border: 1px solid #fed30a;
-      background: rgba(175, 179, 255, 0);
+      border: 2px solid ${(props) => props.theme.colors.secondary};
+      background: ${(props) => props.theme.colors.background};
+      color:  ${(props) => props.theme.colors.text};
     }
   }
 
@@ -53,7 +54,8 @@ export const LoginForm = styled.div`
     height: 34px;
     flex-shrink: 0;
     border-radius: 50px;
-    background: #fed30a;
+    background: ${(props) => props.theme.colors.secondary};
+    color:  ${(props) => props.theme.colors.text};
     border: none;
     margin-top: 48px;
     margin-bottom: 48px;
@@ -65,7 +67,7 @@ export const LoginForm = styled.div`
     a {
       font-weight: bold;
       text-decoration: none;
-      color: #000;
+      color:  ${(props) => props.theme.colors.text};
       font-family: Inter;
       font-size: 16px;
       font-style: normal;
@@ -75,7 +77,7 @@ export const LoginForm = styled.div`
   }
 
   .sign_in {
-    color: #000;
+    color:  ${(props) => props.theme.colors.text};
     font-family: Inter;
     font-size: 16px;
     font-style: normal;
@@ -84,7 +86,7 @@ export const LoginForm = styled.div`
 
     a {
       text-decoration: none;
-      color: #000;
+      color:  ${(props) => props.theme.colors.text};
       font-weight: bold;
     }
   }
