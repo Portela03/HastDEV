@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Confirmation</title>
+     <style>
+    
+    body {
+            font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
+            background-color: #e9ecef;
+            margin: 0;
+            padding: 0;
+        }
+
+    .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-top: 3px solid #1a82e2;
+            border-bottom: 3px solid #1a82e2;
+            text-align: center;
+        }
+
+    .logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+    .logo img {
+            width: 100px;
+            height: auto;
+        }
+
+    .pin-container {
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+
+    .pin-code {
+            font-size: 32px;
+            font-weight: 700;
+            text-align: center;
+            color: black;
+            margin-right: 10px;
+        }
+
+    .message {
+            font-size: 16px;
+            line-height: 1.5;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+    .sender-info {
+            border-top: 1px solid #d4dadf;
+            padding-top: 20px;
+            text-align: center;
+        }
+
+    .sender-info p {
+            margin: 0;
+        }
+    .button {
+            background-color: #1a82e2;
+            color: #ffffff;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+    .button:hover {
+            background-color: #155d91;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="https://i.imgur.com/1ua9GET.png" alt="Logo">
+        </div>
+        <div class="pin-container">
+            <span class="pin-code">@PIN_CODE</span>
+            <button class="button" onclick="copiarPin()">Copiar PIN</button>
+        </div>
+        <div class="message">
+            Para concluir o processo de verificação, confirme o PIN acima para a confirmação da sua conta. Caso não tenha
+            solicitado esta verificação, por favor, ignore este email.
+        </div>
+        <div class="sender-info">
+            <p>De<br/>HastyDev</p>
+        </div>
+
+        <script>
+            function copiarPin() {
+                var pinCode = document.querySelector('.pin-code');
+                var tempInput = document.createElement('input');
+                tempInput.value = pinCode.textContent;
+                document.body.appendChild(tempInput);
+                tempInput.select();
+                document.execCommand('copy');
+                document.body.removeChild(tempInput);
+                alert('PIN copiado para a área de transferência!');
+            }
+        </script>
+    </div>
+    
+</body>
+
+</html>
