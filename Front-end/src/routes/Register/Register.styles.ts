@@ -4,11 +4,11 @@ export const rightDivSyled = styled.div`
   width: 438px;
   height: 830px;
   flex-shrink: 0;
-  background: #fed30a;
+  background: ${(props) => props.theme.colors.secondary};
 `;
 
 export const RegisterForm = styled.div`
-  background-color: #fff;
+  background-color: ${(props) => props.theme.colors.background};
   padding: 20px;
   border-radius: 10px;
   text-align: center;
@@ -18,7 +18,7 @@ export const RegisterForm = styled.div`
     text-align: center;
     margin-top: 5%;
     margin-bottom: 54px;
-    color: #1a1a1a;
+    color: ${(props) => props.theme.colors.text};
     font-family: Inter;
     font-size: 16px;
     font-style: normal;
@@ -31,7 +31,7 @@ export const RegisterForm = styled.div`
     label {
       display: block;
       margin-bottom: 16px;
-      color: #000;
+      color: ${(props) => props.theme.colors.text};
       font-family: Inter;
       font-size: 16px;
       font-style: normal;
@@ -42,7 +42,7 @@ export const RegisterForm = styled.div`
       width: 370px;
       padding: 10px;
       border-radius: 50px;
-      border: 1px solid #fed30a;
+      border: 1px solid ${(props) => props.theme.colors.text};
       background: rgba(175, 179, 255, 0);
     }
   }
@@ -52,7 +52,8 @@ export const RegisterForm = styled.div`
     height: 34px;
     flex-shrink: 0;
     border-radius: 50px;
-    background: #fed30a;
+    background: ${(props) => props.theme.colors.secondary};
+    color: ${(props) => props.theme.colors.text};
     border: none;
     margin-top: 20px;
     margin-bottom: 20px;
