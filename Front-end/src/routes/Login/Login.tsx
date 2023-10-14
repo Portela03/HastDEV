@@ -120,6 +120,7 @@ const Login: React.FC = () => {
               </Formik>
             </L.LoginForm>
           </Col>
+          
           <Col style={{ position: "relative" }}>
             <img
               src={LoginImg}
@@ -129,7 +130,8 @@ const Login: React.FC = () => {
                 zIndex: "2",
                 height: "auto",
                 width: "90%",
-                marginTop: "-10%",
+                
+                
               }}
             />
             <div className="d-flex justify-content-end" style={{ zIndex: "1" }}>

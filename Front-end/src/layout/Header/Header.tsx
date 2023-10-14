@@ -16,17 +16,14 @@ interface Props {
 }
 
 const Header: React.FC<Props> = ({ toggleTheme }) => {
-
-
   const theme = useContext(ThemeContext);
-
   if (!theme) {
 
     return null;
   }
 
-
     const ImgDarkLight = (theme.title) === 'light' ? LogoLight : LogoDark
+    
   return (
     <L.Container id="container1">
       <Navbar expand="lg">
