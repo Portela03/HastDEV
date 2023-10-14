@@ -14,20 +14,23 @@ interface FormValues {
   email: string;
   confirmPassword: string;
 }
+ 
+
+ 
 
 const validationsRegister = yup.object().shape({
-  first_name: yup.string().required(),
-  last_name: yup.string().required(),
-  username: yup.string().required(),
-  email: yup.string().email("email inválido").required("O email é obrigatório"),
-  password: yup
-    .string()
-    .min(8, "A senha deve ter pelo menos 8 caracteres")
-    .required("A senha é obrigatória"),
-  confirmPassword: yup
-    .string()
-    .oneOf([yup.ref("password")], "As senhas são diferentes")
-    .required("A confirmação da senha é obrigatória"),
+  first_name: yup.string().required("O campo de nome é obrigatório"),
+  last_name: yup.string().required("O campo de sobrenome é obrigatório"),
+  username: yup.string().required("O campo de nome de usuário é obrigatório").min(5, "O username deve ter pelo menos 5 caracteres"),
+  email: yup.string().email("Email inválido").required("O email é obrigatório"),
+  password: yup.string()
+    .required("A senha é obrigatória")
+    .min(6, "A senha deve ter pelo menos 6 caracteres")
+    .matches(/[a-z]/, "A senha deve conter pelo menos uma letra minúscula")
+    .matches(/[A-Z]/, "A senha deve conter pelo menos uma letra maiúscula")
+    .matches(/\d/, "A senha deve conter pelo menos um número")
+    .matches(/[@$!¨%*#?&]/, "A senha deve conter pelo menos um caractere especial"),
+  confirmPassword: yup.string().required("A confirmação da senha é obrigatória").oneOf([yup.ref("password")], "As senhas não coincidem"),
 });
 
 const Register: React.FC = () => {
