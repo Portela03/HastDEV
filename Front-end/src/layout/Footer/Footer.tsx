@@ -1,51 +1,80 @@
-import { Container, Row, Col } from 'react-bootstrap';
+import { Title, SubTitle, Button } from './Footer.styles';
 
-const Footer: React.FC = () => {
-    return(
-      <footer className="footer">
+import LogoLight from '../../assets/LogoLight.svg';
+import { Link,  } from "react-router-dom";
+
+import {  Row, Col, Container } from 'react-bootstrap';
+
+
+const Footer: React.FC = () => (
+  <footer className="footer">
+
+    <Container>
       <Container>
-        <Row>
-          <Col sm={3}>
-            <h2>Logotipo</h2>
-            <img src="/logo.png" alt="Logotipo" />
-          </Col>
-          <Col sm={3}>
-            <h2>Links</h2>
-            <ul>
-            <li>gfgnfg</li>
-            </ul>
-          </Col>
-          <Col sm={3}>
-            <h2>Contato</h2>
-            <p>
-              Endereço: Rua dos Bobos, 01
-              Cidade: São Paulo
-              CEP: 01234-5678
-            </p>
-            <p>
-              Telefone: (11) 99999-9999
-              E-mail: contato@meusite.com
-            </p>
-          </Col>
-          <Col sm={3}>
-            <h2>Copyright</h2>
-            <p>Copyright © 2023</p>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <h2>Outro</h2>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Morbi euismod, ante eget scelerisque congue, lectus velit
-              tincidunt felis, eget scelerisque eros mi et mauris.
-            </p>
-          </Col>
-        </Row>
-      </Container>
-    </footer>
+      <Row>
+        <Col sm={3}>
+          <img
+            src={LogoLight}
+            alt="Logo HastyDEV modo Light"
+            className="mt-2"
+          />
+          <Title>+1 (7635) 547-12-97</Title>
+          <Title>support@lift.agency</Title>
+        </Col>
+        <Col sm={3}>
+          <Title>Quick Links</Title>
+          <Link to="/">
+            <SubTitle>Home</SubTitle>
+          </Link>
+          <Link to="/About">
+            <SubTitle>Sobre Nós</SubTitle>
+          </Link>
+        </Col>
+        <Col sm={3}>
+          <Title>Sobre o Projeto</Title>
+          <Title>Contate-Nos</Title>
+        </Col>
 
-    )
-  };
-  
-  export default Footer;
+        <Col sm={3}>
+          <Title>Newsletter</Title>
+          <div className="container text-center">
+            <div className="row align-items-start">
+              <div className="col">
+                <input
+                  placeholder='Receba As Novidades'
+                  style={{
+                    width: '160px',
+                    height: '50px',
+                    opacity: 0.65,
+                    color: '#0A142F',
+                    fontSize: 14,
+                    fontFamily: 'Rasa',
+                    fontWeight: '400',
+                    wordWrap: 'break-word'
+                  }}
+                />
+              </div>
+              <div className="col">
+                <Button />
+              </div>
+            </div>
+          </div>
+        </Col>
+      </Row>
+
+      <Row>
+        <Col>
+          <Title>Outro</Title>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Morbi euismod, ante eget scelerisque congue, lectus velit
+            tincidunt felis, eget scelerisque eros mi et mauris.
+          </p>
+        </Col>
+      </Row>
+      </Container>
+    </Container>
+  </footer>
+);
+
+export default Footer;

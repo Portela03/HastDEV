@@ -1,32 +1,36 @@
 import React from 'react';
 import { Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import styled from 'styled-components';
+
+
+const StyledNavLink = styled(Nav.Link)`
+  color: ${props => props.theme.colors.text};
+  text-decoration: none;
+`;
 
 const NavLinks: React.FC = () => {
   return (
-    <div
-      className="d-flex align-items-center gap-4"
-      style={{ marginLeft: 100 }}
-    >
+    <div className="d-flex align-items-center gap-4" style={{ marginLeft: 100 }}>
       <Nav.Item>
-        <Nav.Link as={Link} to="/">
+        <StyledNavLink as={Link} to="/">
           Home
-        </Nav.Link>
+        </StyledNavLink>
       </Nav.Item>
       <Nav.Item>
-        <Nav.Link as={Link} to="/about">
+        <StyledNavLink as={Link} to="/about">
           Sobre Nós
-        </Nav.Link>
+        </StyledNavLink>
       </Nav.Item>
       <Nav.Item>
-        <Nav.Link as={Link} to="/contact">
+        <StyledNavLink as={Link} to="/contact">
           Contate-nos
-        </Nav.Link>
+        </StyledNavLink>
       </Nav.Item>
       <Nav.Item>
-        <Nav.Link as={Link} to="/project">
+        <StyledNavLink as={Link} to="/project">
           O Projeto
-        </Nav.Link>
+        </StyledNavLink>
       </Nav.Item>
     </div>
   );

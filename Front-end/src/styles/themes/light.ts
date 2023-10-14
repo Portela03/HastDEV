@@ -1,3 +1,4 @@
+
 export default{
     title: 'light',
 
@@ -11,7 +12,8 @@ export default{
 
     
     
-    }
+    },
 
+   
 
 };
