@@ -31,7 +31,7 @@ const Header: React.FC<Props> = ({ toggleTheme }) => {
         <Container fluid>
           <Navbar.Brand as={Link} to="/" className="mr-auto">
             <img
-              src={LogoLight}
+                src={(theme.title) === 'light' ? LogoLight : LogoDark}
               alt="Logo HastyDEV modo Light"
               className="mt-2"
             />
