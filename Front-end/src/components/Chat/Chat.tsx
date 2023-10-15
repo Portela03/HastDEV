@@ -8,7 +8,7 @@ export default function Chat() {
 
   useEffect(() => {
     function onChatMessage(message: string) {
-      setMessages((previous) => [...previous, message]);
+      setMessages((prev) => [...prev, message]);
     }
 
     socket.on("chatMessage", onChatMessage);
