@@ -9,6 +9,7 @@ import Hero from "./routes/Hero/Hero";
 import Login from "./routes/Login/Login";
 import Project from "./routes/Project/Project";
 import Register from "./routes/Register/Register";
+import Chat from "./components/Chat/Chat"
 
 import GlobalStyle from "./styles/global";
 import { ThemeProvider } from "styled-components";
@@ -34,6 +35,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/project" element={<Project />} />
+          <Route path="/chat" element={<Chat />}/>
         </Routes>
         <Footer />
       </Router>
