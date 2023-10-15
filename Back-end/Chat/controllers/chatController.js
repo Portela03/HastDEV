@@ -7,9 +7,9 @@ function chatController(io, socket) {
     console.log("Usuário Desconectado");
   });
 
-  socket.on("chat message", (msg) => {
+  socket.on("chatMessage", (msg) => {
     messageModel.saveMessage(msg);
-    io.emit("chat message", msg);
+    io.emit("chatMessage", msg);
   });
 }
 

@@ -1,30 +1,27 @@
 import { useState } from "react";
-import { socket } from "../../socket";
-import { ReactElement } from "react";
 
-function ChatForm(): ReactElement {
-  const [value, setValue] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
+function ChatForm({
+  onSendMessage,
+}: {
+  onSendMessage: (message: string) => void;
+}) {
+  const [message, setMessage] = useState("");
 
-  function onSubmit(event: React.FormEvent): void {
-    event.preventDefault();
-    setIsLoading(true);
-
-    socket.timeout(5000).emit("create-something", value, () => {
-      setIsLoading(false);
-    });
-  }
+  const handleSendMessage = () => {
+    if (message) {
+      onSendMessage(message);
+      setMessage("");
+    }
+  };
 
   return (
-    <form onSubmit={onSubmit}>
+    <form onSubmit={(e) => e.preventDefault()}>
       <input
-        onChange={(e) => setValue(e.target.value)}
+        onChange={(e) => setMessage(e.target.value)}
+        value={message}
         aria-label="Input Label"
       />
-
-      <button type="submit" disabled={isLoading}>
-        Submit
-      </button>
+      <button onClick={handleSendMessage}>Enviar</button>
     </form>
   );
 }

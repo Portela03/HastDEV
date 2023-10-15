@@ -1,44 +1,31 @@
-import { useState, useEffect } from 'react';
-import { socket } from '../../socket';
-import ConnectionState from './ConnectionState';
-import ConnectionManager from './ConnectionManager';
-import  ChatForm  from './ChatForm';
-import  Events from './Events';
+import { useState, useEffect } from "react";
+import { socket } from "../../socket";
+import ChatForm from "./ChatForm";
+import ChatMessages from "./ChatMessages";
 
 export default function Chat() {
-  const [isConnected, setIsConnected] = useState(socket.connected);
-  const [fooEvents, setFooEvents] = useState<string[]>([]);
+  const [messages, setMessages] = useState<string[]>([]);
 
   useEffect(() => {
-    function onConnect() {
-      setIsConnected(true);
+    function onChatMessage(message: string) {
+      setMessages((previous) => [...previous, message]);
     }
 
-    function onDisconnect() {
-      setIsConnected(false);
-    }
-
-    function onFooEvent(value: string) {
-      setFooEvents((previous) => [...previous, value]);
-    }
-
-    socket.on('connect', onConnect);
-    socket.on('disconnect', onDisconnect);
-    socket.on('foo', onFooEvent);
+    socket.on("chatMessage", onChatMessage);
 
     return () => {
-      socket.off('connect', onConnect);
-      socket.off('disconnect', onDisconnect);
-      socket.off('foo', onFooEvent);
+      socket.off("chatMessage", onChatMessage);
     };
   }, []);
 
+  const sendMessage = (message: string) => {
+    socket.emit("chatMessage", message);
+  };
+
   return (
     <div className="App">
-      <ConnectionState isConnected={ isConnected } />
-      <Events events={ fooEvents } />
-      <ConnectionManager />
-      <ChatForm />
+      <ChatMessages messages={messages} />
+      <ChatForm onSendMessage={sendMessage} />
     </div>
   );
 }
