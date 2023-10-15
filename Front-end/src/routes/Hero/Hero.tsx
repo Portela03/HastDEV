@@ -4,21 +4,19 @@ import HeroImg2 from "../../assets/images/Hero/HeroImg2.webp";
 import HeroImg3 from "../../assets/images/Hero/HeroImg3.webp";
 import HeroImg4 from "../../assets/images/Hero/HeroImg4.webp";
 import { Link } from "react-router-dom";
+import { HeadingTitle, Paragraph } from "../../components/Texts/Texts";
 
 const Hero: React.FC = () => {
   return (
     <Container className="text-center">
-      <h1 className="display-3">
-        Bem-vindo à HastyDEV - Desenvolva Projetos Reais
-      </h1>
-      <p className="lead">
-        Encontre Projetos Reais para Anexar ao seu Portfólio, Conquiste Seu
-        Local no Mercado E Seja Recompensado Por Isso!
-      </p>
+      <HeadingTitle
+        title="Bem-vindo à HastyDEV - Desenvolva Projetos Reais"
+      />
+      <Paragraph paragraph="Encontre Projetos Reais para Anexar ao seu Portfólio, Conquiste Seu
+        Local no Mercado E Seja Recompensado Por Isso!"/>
       <Link to="/register">
         <Button variant="primary">Inscreva-se</Button>
       </Link>
-
       <div className="mt-4">
         <Row>
           <Col md={3}>

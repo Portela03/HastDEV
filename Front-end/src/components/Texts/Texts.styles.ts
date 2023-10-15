@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const HeadingTitle = styled.h1`
+export const HeadingTitleStyled = styled.h1`
   color: #1b2124;
   text-align: center;
   font-family: Inter;
@@ -10,7 +10,7 @@ export const HeadingTitle = styled.h1`
   line-height: 116%;
 `;
 
-export const HeadingSubtitle = styled.h2`
+export const HeadingSubtitleStyled = styled.h2`
   color: #262626;
   text-align: center;
   font-family: Inter;
@@ -20,7 +20,7 @@ export const HeadingSubtitle = styled.h2`
   line-height: 88px;
 `;
 
-export const HeadingInterTitle = styled.h3`
+export const HeadingInterTitleStyled = styled.h3`
   color: var(--neutral-100, #262626);
   font-family: Inter;
   font-size: 32px;
@@ -29,7 +29,7 @@ export const HeadingInterTitle = styled.h3`
   line-height: 32px;
 `;
 
-export const Paragraph = styled.p`
+export const ParagraphStyled = styled.p`
   color: #000;
   text-align: center;
   font-family: Inter;
