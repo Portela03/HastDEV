@@ -22,16 +22,16 @@ const Hero: React.FC = () => {
       <div className="mt-4">
         <Row>
           <Col md={3}>
-            <img src={HeroImg1} alt="" className="img-fluid" />
+            <img src={HeroImg1} alt="" className="img-fluid" loading="lazy"/>
           </Col>
           <Col md={3}>
-            <img src={HeroImg2} alt="" className="img-fluid" />
+            <img src={HeroImg2} alt="" className="img-fluid" loading="lazy"/>
           </Col>
           <Col md={3}>
-            <img src={HeroImg3} alt="" className="img-fluid" />
+            <img src={HeroImg3} alt="" className="img-fluid" loading="lazy"/>
           </Col>
           <Col md={3}>
-            <img src={HeroImg4} alt="" className="img-fluid" />
+            <img src={HeroImg4} alt="" className="img-fluid" loading="lazy"/>
           </Col>
         </Row>
       </div>
