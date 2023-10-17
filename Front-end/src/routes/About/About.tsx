@@ -1,48 +1,38 @@
 import { Container, Row, Col } from "react-bootstrap";
+import * as A from "./About.styles"
 
 import AboutImg from "../../assets/images/About/AboutImg1.png";
 import WorldMapLight from "../../assets/images/About/WorldMapLight.svg";
 import "./Tabela.css";
+import { HeadingTitle, Paragraph } from "../../components/Texts/Texts";
 
 const About: React.FC = () => {
   return (
     <Container className="text-center">
       <Row>
-        <Col
-          xs={12}
-          style={{ borderBottom: "5px solid #000", marginBottom: "50px" }}
-        >
-          <h1 className="display-3">
-            Aqui Nós Garantimos Seu Sucesso Profissional
-          </h1>
+        <Col xs={12}>
+          <HeadingTitle
+            title="Aqui Nós Garantimos"
+            span="Seu Sucesso Profissional"
+            hasUnderline={true}
+          />
         </Col>
         <Col xs={12}>
-          <div
-            style={{
-              width: "1280px",
-              height: "402px",
-              flexShrink: 0,
-              backgroundImage:
-                "linear-gradient(90deg, #FED30A 0%, #FED30A 100%)",
-              position: "absolute",
-              zIndex: -1,
-              borderRadius: "40px",
-            }}
-          >
-            <p>
-              Na HastyDEV, acreditamos que o sucesso profissional deve estar ao
+          <A.RectangleDiv
+          className="mt-4"
+          > 
+            <Paragraph paragraph="Na HastyDEV, acreditamos que o sucesso profissional deve estar ao
               alcance de todos. É por isso que criamos uma plataforma
               colaborativa gamificada que não apenas conecta desenvolvedores
               talentosos com organizações sociais e empresas parceiras, mas
               também garante que cada passo que você dá conosco seja uma jornada
               rumo ao sucesso. Nossa missão é simples, mas poderosa: enriquecer
               sua experiência profissional enquanto você contribui para um mundo
-              melhor
-            </p>
-          </div>
+              melhor"/>
+          </A.RectangleDiv>
         </Col>
         <Col xs={12} style={{ marginTop: "150px" }}>
-          <img src={AboutImg} alt="" className="img-fluid" />
+          <A.ImageStyled src={AboutImg} alt="" className="img-fluid"/>
         </Col>
         <Col
           xs={12}

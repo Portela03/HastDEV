@@ -22,6 +22,7 @@ class Carousel extends Component<CustomCarouselProps>  {
       speed: 5000,
       autoplaySpeed: 0,
       cssEase: "linear",
+      arrows: false,
     };
     
     return (

@@ -1,7 +1,9 @@
 import * as T from "./Texts.styles";
+import { TextStyledProps } from "./Texts.styles";
 
-interface TextProps {
+interface TextProps extends TextStyledProps{
   title?: string;
+  span?: string;
   subtitle?: string;
   intertitle?: string;
   paragraph?: string;
@@ -11,6 +13,7 @@ interface TextProps {
 
 export const HeadingTitle: React.FC<TextProps> = ({
   title,
+  span,
   className,
   style,
   ...otherProps
@@ -18,6 +21,7 @@ export const HeadingTitle: React.FC<TextProps> = ({
   return (
     <T.HeadingTitleStyled className={className} style={style} {...otherProps}>
       {title}
+      <T.spanStyled>{span}</T.spanStyled>
     </T.HeadingTitleStyled>
   );
 };
