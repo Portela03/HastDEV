@@ -6,9 +6,13 @@ import HeroImg2 from "../../assets/images/Hero/HeroImg2.webp";
 import HeroImg3 from "../../assets/images/Hero/HeroImg3.webp";
 import HeroImg4 from "../../assets/images/Hero/HeroImg4.webp";
 
+interface CustomCarouselProps {
+    className: string; 
+  }
 
-export default class Carousel extends Component {
+class Carousel extends Component<CustomCarouselProps>  {
   render() {
+    const { className } = this.props;
     const settings = {
       dots: false,
       infinite: true,
@@ -19,8 +23,9 @@ export default class Carousel extends Component {
       autoplaySpeed: 0,
       cssEase: "linear",
     };
+    
     return (
-      <Container>
+      <Container className={className}>
         <Slider {...settings}>
           <div className="slide-item">
             <img src={HeroImg1} alt="" width="90%" height="250px" />
@@ -39,3 +44,5 @@ export default class Carousel extends Component {
     );
   }
 }
+
+export default Carousel;

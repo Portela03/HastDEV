@@ -17,7 +17,6 @@ import light from "./styles/themes/light";
 import dark from "./styles/themes/dark";
 
 import usePersisteState from "./utils/usePersisteState";
-import Carousel from "./components/Carousel/Carousel";
 
 function App() {
   const [theme, setTheme] = usePersisteState("themes", light);
@@ -37,7 +36,6 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/project" element={<Project />} />
           <Route path="/chat" element={<Chat />}/>
-          <Route path="/carousel" element={ <Carousel/> }/>
         </Routes>
         <Footer />
       </Router>
