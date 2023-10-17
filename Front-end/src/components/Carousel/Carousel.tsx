@@ -6,7 +6,6 @@ import HeroImg2 from "../../assets/images/Hero/HeroImg2.webp";
 import HeroImg3 from "../../assets/images/Hero/HeroImg3.webp";
 import HeroImg4 from "../../assets/images/Hero/HeroImg4.webp";
 
-import "./Carousel.css"; // Importe um arquivo CSS para adicionar estilos personalizados
 
 export default class Carousel extends Component {
   render() {
