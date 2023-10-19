@@ -33,15 +33,6 @@ const Login: React.FC = () => {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {
       alert(err.response.data.error);
-
-      /* switch (err.response.status) {
-        case 401:
-          alert(err.response.data.error)
-          break;
-        case 403:
-          alert(err.response.data.error)
-          break;
-      } */
     }
   };
 

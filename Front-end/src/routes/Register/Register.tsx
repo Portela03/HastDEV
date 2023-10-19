@@ -52,10 +52,8 @@ const Register: React.FC = () => {
           <img
             src={RegisterImg}
             alt=""
-            style={{
-              height: "auto",
-              width: "90%",
-            }}
+            height="auto"
+            width="90%"
           />
         </Col>
         <Col>
