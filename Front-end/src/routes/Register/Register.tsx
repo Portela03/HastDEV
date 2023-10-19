@@ -3,7 +3,7 @@ import * as yup from "yup";
 import { Container, Row, Col } from "react-bootstrap";
 import RegisterImg from "../../assets/images/RegisterImg.png";
 import { FormFetch } from "../../axios/config";
-import { Formik, Form, Field } from "formik";
+import { Formik, Field } from "formik";
 import { Link } from "react-router-dom";
 
 interface FormValues {

@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const FormFetch = axios.create({
-  baseURL: "http://localhost:3001",
+  baseURL: "https://hastydevapi.azurewebsites.net/",
   headers: {
     "Content-Type": "application/json",
   },
