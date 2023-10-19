@@ -52,7 +52,7 @@ const registrationValidationRules = [
     .trim()
     .notEmpty()
     .withMessage('O campo de nome é obrigatório')
-    .matches(/^[a-zA-Z0-9\s\-]*$/)
+    .matches(/^[a-zA-Z\s\-áàâãéèêíïóôõöúçñ]*$/i)
     .withMessage('O campo de primeiro nome não deve conter caracteres especiais')
     .customSanitizer(value => value.toUpperCase())
     .custom((value) => {
@@ -67,7 +67,7 @@ const registrationValidationRules = [
     .trim()
     .notEmpty()
     .withMessage('O campo de nome é obrigatório')
-    .matches(/^[a-zA-Z0-9\s\-]*$/)
+    .matches(/^[a-zA-Z\s\-áàâãéèêíïóôõöúçñ]*$/i)
     .withMessage('O campo de último nome não deve conter caracteres especiais')
     .customSanitizer(value => value.toUpperCase())
     .custom((value) => {
