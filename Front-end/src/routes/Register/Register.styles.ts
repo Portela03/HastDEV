@@ -42,8 +42,9 @@ export const RegisterForm = styled.div`
       width: 370px;
       padding: 10px;
       border-radius: 50px;
-      border: 1px solid ${(props) => props.theme.colors.text};
-      background: rgba(175, 179, 255, 0);
+      border: 2px solid ${(props) => props.theme.colors.secondary};
+      background: ${(props) => props.theme.colors.background};
+      color:  ${(props) => props.theme.colors.text};
     }
   }
 

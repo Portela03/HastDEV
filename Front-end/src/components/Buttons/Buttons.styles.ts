@@ -3,7 +3,9 @@ import { Link } from "react-router-dom";
 
 export const StyledLink = styled(Link)`
   text-decoration: none;
+  color:  ${(props) => props.theme.colors.text};
   color: inherit;
+
 `;
 
 export const ButtonPrimaryStyled = styled.button`

@@ -5,7 +5,7 @@ export interface TextStyledProps {
 }
 
 export const HeadingTitleStyled = styled.h1<TextStyledProps>`
-  color: #1b2124;
+  color:  ${(props) => props.theme.colors.text};
   text-align: center;
   font-family: Inter;
   font-size: 64px;
@@ -25,7 +25,7 @@ export const HeadingTitleStyled = styled.h1<TextStyledProps>`
 `;
 
 export const HeadingSubtitleStyled = styled.h2`
-  color: #262626;
+ color:  ${(props) => props.theme.colors.text};
   text-align: center;
   font-family: Inter;
   font-size: 48px;
@@ -35,7 +35,7 @@ export const HeadingSubtitleStyled = styled.h2`
 `;
 
 export const HeadingInterTitleStyled = styled.h3`
-  color: #262626;
+color:  ${(props) => props.theme.colors.text};
   font-family: Inter;
   font-size: 32px;
   font-style: normal;
@@ -44,7 +44,7 @@ export const HeadingInterTitleStyled = styled.h3`
 `;
 
 export const ParagraphStyled = styled.p`
-  color: #000;
+color:  ${(props) => props.theme.colors.text};
   text-align: center;
   font-size: 24px;
   font-style: normal;
@@ -55,5 +55,5 @@ export const ParagraphStyled = styled.p`
 
 export const spanStyled = styled.span`
   display: block;
-  color: #fed30a;
+  ccolor:  ${(props) => props.theme.colors.text};
 `;
