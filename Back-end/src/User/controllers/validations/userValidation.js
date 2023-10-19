@@ -58,7 +58,7 @@ const registrationValidationRules = [
     .custom((value) => {
         const containsForbiddenWord = filter.isProfane(value);
         if (containsForbiddenWord) {
-          throw new Error('O username contém palavras proibidas ou inadequadas');
+          throw new Error('O nome contém palavras proibidas ou inadequadas');
         }
         return true;
       }),
@@ -73,7 +73,7 @@ const registrationValidationRules = [
     .custom((value) => {
         const containsForbiddenWord = filter.isProfane(value);
         if (containsForbiddenWord) {
-          throw new Error('O username contém palavras proibidas ou inadequadas');
+          throw new Error('O sobrenome contém palavras proibidas ou inadequadas');
         }
         return true;
       }),
