@@ -28,7 +28,7 @@ const validationsRegister = yup.object().shape({
     .min(6, "A senha deve ter pelo menos 6 caracteres")
     .matches(/[a-z]/, "A senha deve conter pelo menos uma letra minúscula")
     .matches(/[A-Z]/, "A senha deve conter pelo menos uma letra maiúscula")
-    .matches(/\d/, "A senha deve conter pelo menos um número")
+    .matches(/[0-9]/, "A senha deve conter pelo menos um número")
     .matches(/[@$!¨%*#?&]/, "A senha deve conter pelo menos um caractere especial"),
   confirmPassword: yup.string().required("A confirmação da senha é obrigatória").oneOf([yup.ref("password")], "As senhas não coincidem"),
 });

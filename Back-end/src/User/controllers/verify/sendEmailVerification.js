@@ -4,6 +4,8 @@ const User = require('../../models/userModel');
 const VerificationCode = require('../../models/verificationCodeModel');
 const pino = require('pino')();
 const generateVerificationCode = require("./emailVerifyGenerate")
+const fs = require('fs');
+const path = require('path');
 
 // Função para enviar email de verificação
 async function sendVerificationEmail(req, res) {
@@ -35,11 +37,17 @@ async function sendVerificationEmail(req, res) {
         },
       });
 
+
+      const emailHTMLPath = path.join(__dirname, 'emailConfirmation.html');
+      const emailHTML = fs.readFileSync(emailHTMLPath, 'utf8');
+      const emailHTMLWithPIN = emailHTML.replace('@PIN_CODE', verificationCode);
+
+
       await transport.sendMail({
         from: process.env.GMAIL_USER,
         to: email,
         subject: 'Confirmação de email',
-        html: `<h1>Seu código de verificação: ${code.code}</h1>`,
+        html: emailHTMLWithPIN,
       });
 
       pino.info('Email de verificação enviado com sucesso!');

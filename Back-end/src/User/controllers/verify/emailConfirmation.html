@@ -45,7 +45,6 @@
             font-weight: 700;
             text-align: center;
             color: black;
-            margin-right: 10px;
         }
 
     .message {
@@ -64,16 +63,7 @@
     .sender-info p {
             margin: 0;
         }
-    .button {
-            background-color: #1a82e2;
-            color: #ffffff;
-            border: none;
-            padding: 12px 24px;
-            font-size: 16px;
-            cursor: pointer;
-            border-radius: 4px;
-            transition: background-color 0.3s ease;
-        }
+    
 
     .button:hover {
             background-color: #155d91;
@@ -88,7 +78,7 @@
         </div>
         <div class="pin-container">
             <span class="pin-code">@PIN_CODE</span>
-            <button class="button" onclick="copiarPin()">Copiar PIN</button>
+    
         </div>
         <div class="message">
             Para concluir o processo de verificação, confirme o PIN acima para a confirmação da sua conta. Caso não tenha
@@ -98,18 +88,7 @@
             <p>De<br/>HastyDev</p>
         </div>
 
-        <script>
-            function copiarPin() {
-                var pinCode = document.querySelector('.pin-code');
-                var tempInput = document.createElement('input');
-                tempInput.value = pinCode.textContent;
-                document.body.appendChild(tempInput);
-                tempInput.select();
-                document.execCommand('copy');
-                document.body.removeChild(tempInput);
-                alert('PIN copiado para a área de transferência!');
-            }
-        </script>
+ 
     </div>
     
 </body>
