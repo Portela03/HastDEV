@@ -1,5 +1,7 @@
 const User = require('../../models/userModel');
 const VerificationCode = require('../../models/verificationCodeModel');
+const { logError, logInfo} = require('../../../utils/logger');
+
 
 async function PinVerify(req, res) {
   const { verificationCode, email } = req.body;
@@ -22,19 +24,19 @@ async function PinVerify(req, res) {
         if (timeDifference <= codeExpirationTime) {
           user.isVerified = true;
           await user.save();
-          return res.status(200).json({ message: 'Código de verificação válido.' });
+          logInfo('Código de verificação válido.', res, 200)
         } else {
-          return res.status(400).json({ error: 'Código de verificação expirado.' });
+           logError('Código de verificação expirado.', res, 400)
         }
       } else {
-        return res.status(400).json({ error: 'Código de verificação inválido.' });
+         logError('Código de verificação inválido.', res, 400)
       }
     } else {
-      return res.status(404).json({ error: 'Usuário não encontrado.' });
+       logError('Usuário não encontrado.', res, 404)
     }
   } catch (err) {
-    console.error('Erro ao verificar o código de verificação:' + err);
-    return res.status(500).json({ error: 'Erro ao verificar o código de verificação.' });
+    logError('Erro ao verificar o código de verificação.', res, 500)
+    
   }
 }
 
